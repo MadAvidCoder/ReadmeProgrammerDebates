@@ -1,6 +1,6 @@
 import json
 
-from flask import Flask
+from flask import Flask, redirect
 
 app = Flask(__name__)
 
@@ -27,7 +27,7 @@ def option_1():
         f.write(json.dumps(cur_votes))
     processing = False
     print("option2!")
-    return ''
+    return redirect("https://github.com/MadAvidCoder")
 
 @app.route('/option-2')
 def option_2():
@@ -45,7 +45,7 @@ def option_2():
         f.write(json.dumps(cur_votes))
     processing = False
     print("option1!")
-    return ''
+    return redirect("https://github.com/MadAvidCoder")
 
 @app.route('/results-1')
 def results_1():
