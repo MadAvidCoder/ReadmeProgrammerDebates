@@ -1,25 +1,33 @@
-# About Me
+# README Programmer Debates
+**This is a fun little section to put on a readme, which allows viewers to vote on a controversial programming debate.**
 
-## Hi! I'm David. 👋
+Every 8 hours, a Github Action is set to pick a new question and reset the counts. There are buttons to vote, which send a request to a remote server, which manages the counts.
 
-- 🔭 I’m currently working on improving my algorithmics skills.
-- 🌱 I’m currently learning how to code in C++.
-- 👯 I’m looking to collaborate on some beginner-friendly open-source projects.
-- 🤔 I’m looking for help with finding good algorithmics tutorials/online courses to help me improve.
-- 😄 Pronouns: He/Him
-- ⚡ Fun fact: I love Raspberry Pis!
+Your vote may not appear instantly, due to Github Image caching. A Github Action force resets the cache every 30 minutes, otherwise wait a few minutes and it may appear.
 
-## Programmer Debate
-### <!-- Question starts -->YAML or JSON? Which is better?<!-- Question ends -->
-#### Vote
-[<kbd> <br> <!-- Option 1 starts -->YAML<!-- Option 1 ends --> <br> </kbd>][Option 1]
-[<kbd> <br> <!-- Option 2 starts -->JSON<!-- Option 2 ends --> <br> </kbd>][Option 2]
-#### Here's what the internet thinks!
-<!-- Results 1 starts -->![Results 1](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Ffroggerapi.madavidcoder.hackclub.app%2Fresults-1&query=%24.value&label=YAML)<!-- Results 1 ends -->
-<!-- Results 2 starts -->![Results 2](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Ffroggerapi.madavidcoder.hackclub.app%2Fresults-2&query=%24.value&label=JSON)<!-- Results 2 ends -->
----
-<sup><sub>A new question will appear every three hours, check [MadAvidCoder/ReadmeProgrammerDebates](https://github.com/MadAvidCoder/ReadmeProgrammerDebates) to see how it works!</sub></sub>
+## Usage
+1. Fork this repository.
+2. Use [Nest](https://hackclub.app) or similar to host `server.py` (a flask app)
+3. Update all references to `https://froggerapi.madavidcoder.hackclub.app` within `updater.py` and the below snippet, to the url that your flask app listens to.
+4. Add the below snippet into your `README.md` file, to display the questions:
+    ```
+    ## Programmer Debate
+    ### <!-- Question starts -->Questions will appear here!<!-- Question ends -->
+    #### Vote
+    [<kbd> <br> <!-- Option 1 starts -->Option 1!<!-- Option 1 ends --> <br> </kbd>][Option 1]
+    [<kbd> <br> <!-- Option 2 starts -->Option 2!<!-- Option 2 ends --> <br> </kbd>][Option 2]
+    #### Here's what the internet thinks!
+    <!-- Results 1 starts -->
+    Results will appear here!
+    <!-- Results 1 ends -->
+    <!-- Results 2 starts -->
+    Results will appear here!
+    <!-- Results 2 ends -->
+    ---
+    <sup><sub>A new question will appear every six hours, check [MadAvidCoder/ReadmeProgrammerDebates](https://github.com/MadAvidCoder/ReadmeProgrammerDebates) to see how it works!</sub></sub>
 
-<!-- Links -->
-[Option 1]: https://froggerapi.madavidcoder.hackclub.app/option-1
-[Option 2]: https://froggerapi.madavidcoder.hackclub.app/option-2
+    <!-- Links -->
+    [Option 1]: https://<your-server-url>/option-1
+    [Option 2]: https://<your-server-url/option-2
+    ```
+5. Add `build.yml` and `reset.yml` to your `.github/workflows` folder, so that the questions and results will automatically update.
