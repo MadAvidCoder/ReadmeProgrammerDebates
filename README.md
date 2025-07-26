@@ -1,4 +1,8 @@
 # README Programmer Debates
+<img width="320" alt="image" src="https://github.com/user-attachments/assets/d1afc348-7619-4754-b54a-a11a12c33383" />
+<img width="320" alt="image" src="https://github.com/user-attachments/assets/726730ef-8c0f-46da-a3b8-627dba14ab99" />
+<img width="320" alt="image" src="https://github.com/user-attachments/assets/c2ff1c2f-aaea-49b5-b2d7-ff44f4895889" />
+
 **This is a fun little section to put on a readme, which allows viewers to vote on a controversial programming debate.**
 
 Every 8 hours, a Github Action is set to pick a new question and reset the counts. There are buttons to vote, which send a request to a remote server, which manages the counts.
