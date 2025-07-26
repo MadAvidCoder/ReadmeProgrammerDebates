@@ -14,7 +14,7 @@ Your vote may not appear instantly, due to Github Image caching. A Github Action
 2. Use [Nest](https://hackclub.app) or similar to host `server.py` (a flask app)
 3. Update all references to `https://froggerapi.madavidcoder.hackclub.app` within `updater.py` and the below snippet, to the url that your flask app listens to.
 4. Add the below snippet into your `README.md` file, to display the questions:
-    ```
+    ```Markdown
     ## Programmer Debate
     ### <!-- Question starts -->Questions will appear here!<!-- Question ends -->
     #### Vote
