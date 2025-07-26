@@ -22,7 +22,7 @@ def pick_random_question():
     return question, options
 
 def make_shield(label, endpoint):
-    return '![Results {}](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fmadavidcoder.hackclub.app%2Fresults-{}&query=%24.value&label={})'.format(endpoint, endpoint, label)
+    return '![Results {}](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Ffroggerapi.madavidcoder.hackclub.app%2Fresults-{}&query=%24.value&label={})'.format(endpoint, endpoint, label)
 
 root_path = pathlib.Path(__file__).parent.resolve()
 

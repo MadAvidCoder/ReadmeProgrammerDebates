@@ -1,0 +1,29 @@
+name: Update README
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */3 * * *'
+jobs:
+  update:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - name: 'checkout repo'
+        uses: 'actions/checkout@v2'
+      - name: 'Set up python'
+        uses: 'actions/setup-python@v2'
+        with:
+          python-version: 3.8
+          architecture: x64
+      - name: 'Update README'
+        run: |-
+          python updater.py
+          cat README.md
+      - name: 'Commit and push'
+        run: |-
+          git diff
+          git config --global user.email "183250896+MadAvidCoder@users.noreply.github.com"
+          git config --global user.name "MadREADMEBot"
+          git add -A
+          git commit -m "Changed question" || exit 0
+          git push
