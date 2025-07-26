@@ -1,0 +1,7 @@
+name: 'Clear Image Cache'
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  - name: 'Clear Image Cache'
+    uses: kevincobain2000/action-camo-purge@v1
