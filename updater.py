@@ -26,7 +26,7 @@ def make_shield(label, endpoint):
 
 root_path = pathlib.Path(__file__).parent.resolve()
 
-readme_path = root_path / '../README.md'
+readme_path = root_path / 'README.md'
 
 readme = readme_path.open().read()
 q, a = pick_random_question()
@@ -42,9 +42,9 @@ add_opt_2 = replace_chunk(readme, 'Option 2', a[1], inline=True)
 readme_path.open('w').write(add_opt_2)
 
 readme = readme_path.open().read()
-add_results_1 = replace_chunk(readme, 'Results 1', make_shield(a[0], '1'), inline=True)
+add_results_1 = replace_chunk(readme, 'Results 1', make_shield(a[0], '1'), inline=False)
 readme_path.open('w').write(add_results_1)
 
 readme = readme_path.open().read()
-add_results_2 = replace_chunk(readme, 'Results 2', make_shield(a[1], '2'), inline=True)
+add_results_2 = replace_chunk(readme, 'Results 2', make_shield(a[1], '2'), inline=False)
 readme_path.open('w').write(add_results_2)
