@@ -57,7 +57,7 @@ def results_1():
             cur_votes = json.loads(cur_votes)
     print("results 1")
     print(cur_votes)
-    resp = make_response(str(cur_votes["option1"]))
+    resp = make_response(json.dumps({"value": cur_votes["option1"]}))
     resp.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
     resp.headers["Pragma"] = "no-cache"
     resp.headers["Expires"] = "0"
@@ -73,7 +73,7 @@ def results_2():
             cur_votes = json.loads(cur_votes)
     print("reuslts 2")
     print(cur_votes)
-    resp = make_response(str(cur_votes["option2"]))
+    resp = make_response(json.dumps({"value": cur_votes["option2"]}))
     resp.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
     resp.headers["Pragma"] = "no-cache"
     resp.headers["Expires"] = "0"
