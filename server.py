@@ -1,6 +1,8 @@
 import json
 
-from flask import Flask, redirect
+from flask import Flask, redirect, make_response
+
+from random import randint
 
 app = Flask(__name__)
 
@@ -27,7 +29,7 @@ def option_1():
         f.write(json.dumps(cur_votes))
     processing = False
     print("option2!")
-    return redirect("https://github.com/MadAvidCoder")
+    return redirect("https://github.com/MadAvidCoder?voted={}/#programmer-debate".format(randint(1, 999)))
 
 @app.route('/option-2')
 def option_2():
@@ -45,7 +47,7 @@ def option_2():
         f.write(json.dumps(cur_votes))
     processing = False
     print("option1!")
-    return redirect("https://github.com/MadAvidCoder")
+    return redirect("https://github.com/MadAvidCoder?voted={}/#programmer-debate".format(randint(1, 999)))
 
 @app.route('/results-1')
 def results_1():
@@ -59,7 +61,11 @@ def results_1():
     processing = False
     print("results 1")
     print(cur_votes)
-    return cur_votes["option1"]
+    resp = make_response(str(cur_votes["option1"]))
+    resp.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    resp.headers["Pragma"] = "no-cache"
+    resp.headers["Expires"] = "0"
+    return resp
 
 @app.route('/results-2')
 def results_2():
@@ -74,7 +80,11 @@ def results_2():
     processing = False
     print("reuslts 2")
     print(cur_votes)
-    return cur_votes["option2"]
+    resp = make_response(str(cur_votes["option2"]))
+    resp.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    resp.headers["Pragma"] = "no-cache"
+    resp.headers["Expires"] = "0"
+    return resp
 
 @app.route('/reset')
 def reset():
