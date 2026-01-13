@@ -1,10 +1,25 @@
 import json
-
+import requests
+import os
 from flask import Flask, redirect, make_response
 from threading import Lock
 from random import randint
 lock = Lock()
 app = Flask(__name__)
+
+GITHUB_TOKEN = os.environ.get("GH_TOKEN")
+REPO = "MadAvidCoder/readmeprogrammerdebates"
+
+def trigger_github_dispatch():
+    url = f"https://api.github.com/repos/{REPO}/dispatches"
+    headers = {
+        "Authorization": f"Bearer {GITHUB_TOKEN}",
+        "Accept": "application/vnd.github+json"
+    }
+    data = {"event_type": "vote_cast"}
+    response = requests.post(url, headers=headers, json=data)
+    if response.status_code != 204:
+        print("Failed to trigger dispatch:", response.text)
 
 @app.route("/")
 def main():
@@ -27,6 +42,7 @@ def option_1():
             f.write(json.dumps(cur_votes))
             f.truncate()
         print("option2!")
+    trigger_github_dispatch()
     return redirect("https://github.com/MadAvidCoder?voted={}/#programmer-debate".format(randint(1, 999)))
 
 @app.route('/option-2')
@@ -45,6 +61,7 @@ def option_2():
             f.write(json.dumps(cur_votes))
             f.truncate()
         print("option1!")
+    trigger_github_dispatch()
     return redirect("https://github.com/MadAvidCoder?voted={}/#programmer-debate".format(randint(1, 999)))
 
 @app.route('/results-1')
